@@ -1,0 +1,21 @@
+﻿@using IdentityChat.Models.Entities
+@model List<AppUser>
+
+@foreach (var user in Model)
+{
+    <a href="/Message/Chat?userId=@user.Id" class="text-decoration-none user-item">
+        <div class="sideBar-body d-flex p-2 border-bottom align-items-center">
+            <div class="sideBar-avatar mr-2">
+                <img src="@(!string.IsNullOrEmpty(user.ImageUrl) ? user.ImageUrl : "/images/default-avatar.png")" width="40" height="40" class="rounded-circle" />
+            </div>
+            <div class="sideBar-main">
+                <div class="sideBar-name d-flex justify-content-between">
+                    <span class="name-meta">@user.UserName</span>
+                    <span class="time-meta">@user.LastSeen?.ToString("HH:mm")</span>
+                </div>
+                <div class="last-message text-muted"> @(user.LastMessageContent?.Length > 30 ? user.LastMessageContent.Substring(0, 30) + "..." : user.LastMessageContent)</div>
+            </div>
+        </div>
+    </a>
+
+}

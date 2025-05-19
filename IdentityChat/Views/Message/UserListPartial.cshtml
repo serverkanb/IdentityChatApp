@@ -1,0 +1,22 @@
+﻿@using IdentityChat.Models.Entities
+@model List<AppUser>
+
+@foreach (var user in Model)
+{
+    <div class="row sideBar-body">
+        <a href="/Message/Chat?userId=@user.Id" class="d-flex w-100 text-decoration-none text-dark">
+            <div class="col-sm-3 sideBar-avatar">
+                <div class="avatar-icon">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" />
+                </div>
+            </div>
+            <div class="col-sm-9 sideBar-main">
+                <div class="row">
+                    <div class="col-sm-8 sideBar-name">
+                        <span class="name-meta">@user.UserName</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+}
